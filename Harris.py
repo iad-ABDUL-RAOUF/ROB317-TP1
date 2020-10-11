@@ -15,24 +15,24 @@ print("Type de l'image :",img.dtype)
 t1 = cv2.getTickCount()
 Theta = cv2.copyMakeBorder(img,0,0,0,0,cv2.BORDER_REPLICATE)
 # Mettre ici le calcul de la fonction d'intérêt de Harris
-# derivé partielle celon x (différence finie à l'aide de filter2D)
+# derivee partielle selon x (difference finie a l'aide de filter2D)
 kernel = np.array([[-1, 0, 1]])
 Ix = cv2.filter2D(img,-1,kernel)
-# derivé partielle celon y (différence finie à l'aide de filter2D)
+# derivee partielle selon y (difference finie a l'aide de filter2D)
 kernel = np.array([[-1, 0, 1]]).T
 Iy = cv2.filter2D(img,-1,kernel)
 # produit des derivé partielles
 Ix2 = Ix*Ix
 IxIy = Ix*Iy
 Iy2 = Iy*Iy
-# filtre porte (normalisé) pour sommer les derive partiel sur un voisinnage W
+# filtre porte (normalise) pour sommer les derivee partielles sur un voisinage W
 # et construire la Matrice d'AutoCorrelation (MAC)
 size_W_MAC = 5
 kernel = np.ones((size_W_MAC,size_W_MAC),np.uint8)/(size_W_MAC**2)
 sumIx2W = cv2.filter2D(Ix2,-1,kernel)
 sumIxIyW = cv2.filter2D(IxIy,-1,kernel)
 sumIy2W = cv2.filter2D(Iy2,-1,kernel)
-# calcul de la fonction d'interêt theta
+# calcul de la fonction d'interet theta
 detMAC = sumIx2W*sumIy2W - sumIxIyW*sumIxIyW
 traceMAC = sumIx2W + sumIy2W
 Theta = detMAC - alpha * traceMAC**2
