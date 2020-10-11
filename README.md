@@ -1,2 +1,2 @@
 # ROB317-TP1
-code du tp1 de rob317 complété 
+Code du tp1 de rob317 complété par Iad Abdul-Rouaf et Madeleine Becker
