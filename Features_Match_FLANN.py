@@ -58,7 +58,7 @@ print("Détection points et calcul descripteurs :",time,"s")
 # Calcul de l'appariement
 t1 = cv2.getTickCount()
 # Paramètres de FLANN 
-FLANN_INDEX_KDTREE = 0
+FLANN_INDEX_KDTREE = 1
 index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
 search_params = dict(checks=50) 
 
