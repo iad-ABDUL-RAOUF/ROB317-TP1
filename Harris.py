@@ -27,7 +27,7 @@ IxIy = Ix*Iy
 Iy2 = Iy*Iy
 # filtre porte (normalise) pour sommer les derivee partielles sur un voisinage W
 # et construire la Matrice d'AutoCorrelation (MAC)
-size_W_MAC = 5
+size_W_MAC = 3
 kernel = np.ones((size_W_MAC,size_W_MAC),np.uint8)/(size_W_MAC**2)
 sumIx2W = cv2.filter2D(Ix2,-1,kernel)
 sumIxIyW = cv2.filter2D(IxIy,-1,kernel)
@@ -80,6 +80,8 @@ plt.imshow(Img_pts)
 plt.title('Points de Harris')
 plt.show()
 
-
+plt.imshow(Theta,cmap = 'gray')
+plt.title('Fonction de Harris')
+plt.show()
 
 
