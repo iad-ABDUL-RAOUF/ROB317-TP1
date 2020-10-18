@@ -16,10 +16,10 @@ else:
   sys.exit(2)
 
 #Lecture de la paire d'images
-img1 = cv2.imread('./Image_Pairs/torb_small1.png')
+img1 = cv2.imread('../Image_Pairs/torb_small1.png')
 print("Dimension de l'image 1 :",img1.shape[0],"lignes x",img1.shape[1],"colonnes")
 print("Type de l'image 1 :",img1.dtype)
-img2 = cv2.imread('./Image_Pairs/torb_small2.png')
+img2 = cv2.imread('../Image_Pairs/torb_small2.png')
 print("Dimension de l'image 2 :",img2.shape[0],"lignes x",img2.shape[1],"colonnes")
 print("Type de l'image 2 :",img2.dtype)
 
@@ -64,7 +64,7 @@ search_params = dict(checks=50)
 
 flann = cv2.FlannBasedMatcher(index_params,search_params)
 
-matches = flann.knnMatch(np.asarray(desc1,np.float32),np.asarray(desc2, np.float32),k=2)
+matches = flann.knnMatch(desc1,desc2,k=2)
 # Application du ratio test
 good = []
 for m,n in matches:
